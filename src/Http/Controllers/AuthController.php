@@ -12,6 +12,14 @@ use Dandaj\Api\Models\OAuthToken as Token;
 
 class AuthController extends ApiController
 {
+    protected $tokenTransformer;
+
+    function __construct(TokenTransformer $tokenTransformer)
+    {
+        $this->tokenTransformer = $tokenTransformer;
+
+    }
+
 	public function test()
 	{
 		return 'test from AuthController';
@@ -56,12 +64,12 @@ class AuthController extends ApiController
                         ->create(['token' => str_random(40)]);
 
         if (!$token) 
-            return $this->respondNotFound('Nie udało się utworzyć tokena, spórbuj jeszcze raz');
+            return $this->respondNotFound('Nie udało się utworzyć tokena, spróbuj jeszcze raz');
 
         return $this->setStatusCode(200)->respond([
             'status' => 'success',
             'message' => 'Token successfully created',
-            'token' => $token->token,
+            'token' => $this->tokenTransformer->transform($token),
         ]);  
     }
 

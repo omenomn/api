@@ -7,7 +7,7 @@ class TokenTransformer extends Transformer
 	public function transform($token)
     {
 		return [
-			'token' => $ticket['token'],
+			'token' => $token['token'],
 		];
 	}
 }
