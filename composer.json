@@ -1,0 +1,20 @@
+{
+    "name": "dandaj/api",
+    "description": "Small api package with authorization and token system",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "daniel@omega323.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dandaj\\Api\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "~5"
+    }
+}
