@@ -5,25 +5,12 @@ namespace Dandaj\Api\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Dandaj\Api\Transformers\TokenTransformer;
 use Dandaj\Api\Models\OAuthUser as User;
 use Dandaj\Api\Models\OAuthToken as Token;
 
 
 class AuthController extends ApiController
 {
-    protected $tokenTransformer;
-
-    function __construct(TokenTransformer $tokenTransformer)
-    {
-        $this->tokenTransformer = $tokenTransformer;
-
-    }
-
-	public function test()
-	{
-		return 'test from AuthController';
-	}
 
 	public function verify(Request $request)
    	{
@@ -69,17 +56,17 @@ class AuthController extends ApiController
         return $this->setStatusCode(200)->respond([
             'status' => 'success',
             'message' => 'Token successfully created',
-            'token' => $this->tokenTransformer->transform($token),
+            'token' => $token->token,
         ]);  
     }
 
     public function verifyTest()
     {
         $data = [
-            'login' => 'test',
-            'password' => 'test',
-            'client_id' => 'AIAZrzA6EUJweg11Zg7X',
-            'client_secret' => 'qSGn1J5HxheJp7Wp3i4P7NCex92fFRCzRHiS2BpkMyJXRaxsYQxTYHt7KH8t',
+            'login' => config('api.defaultCredentials.login'),
+            'password' => config('api.defaultCredentials.password'),
+            'client_id' => config('api.defaultCredentials.client_id'),
+            'client_secret' => config('api.defaultCredentials.client_secret'),
         ];
 
         $data = json_encode($data);

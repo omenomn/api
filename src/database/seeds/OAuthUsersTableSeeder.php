@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\OAuthUser as User;
+use Dandaj\Api\Models\OAuthUser as User;
 
 class OAuthUsersTableSeeder extends Seeder
 {
@@ -15,14 +15,14 @@ class OAuthUsersTableSeeder extends Seeder
     	DB::beginTransaction();
 
         $user = User::create([
-        	'login' => 'test',
-        	'password' => bcrypt('test'),
+        	'login' => config('api.defaultCredentials.login'),
+        	'password' => bcrypt(config('api.defaultCredentials.password')),
         ]);
 
         $user->clients()->create([
-        	'external_id' => 'AIAZrzA6EUJweg11Zg7X',
-        	'secret' => 'qSGn1J5HxheJp7Wp3i4P7NCex92fFRCzRHiS2BpkMyJXRaxsYQxTYHt7KH8t',
-        	'website_address' => 'http://example.com',
+        	'external_id' => config('api.defaultCredentials.client_id'),
+        	'secret' => config('api.defaultCredentials.client_secret'),
+        	'website_address' => config('api.defaultCredentials.website_address'),
         ]);
 
         if ($user) {
