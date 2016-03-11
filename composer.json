@@ -13,7 +13,6 @@
             "Dandaj\\Api\\": "src/"
         }
     },
-    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "~5"
     }
