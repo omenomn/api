@@ -36,9 +36,7 @@ class ApiController extends Controller
     {
     	return $this->respond([
     		'status' => 'error',
-    		'message' => [
-                $message
-            ],
+    		'message' => $message,
     	]);
     }
 }
