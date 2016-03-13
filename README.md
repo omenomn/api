@@ -10,29 +10,32 @@ Small Api package with authorization and token system.
 Documents
 -------------
 
- 1. Add to composer.json if not exists:
+ - Add to composer.json if not exists:
+
 ```
 "minimum-stability": "dev", 
 "prefer-stable" : true
 ```
- 2. composer require dandaj/api
- 3. config/app.php add to providers:
+
+ - composer require dandaj/api
+ -  config/app.php add to providers:
+
  
 ```
 Dandaj\Api\ApiServiceProvider::class,
 ```
- 4. php artisan vendor:publish
- 5. composer dumpautoload
- 6. Add to database/seeds/DatabaseSeeder.php to "run" function:
+ - php artisan vendor:publish
+ - composer dumpautoload
+ - Add to database/seeds/DatabaseSeeder.php to "run" function:
 
 ```
 $this->call('OAuthUsersTableSeeder');
 ```
 
- 7. php artisan migrate
- 8. php artisan db:seed
- 9. Transformers example of use.
-	 1. Create UserTransformer class in the previously created folder Transformers or other name in the app folder and create public function transform with model param. Transformers serve to return selected fields of model in response:
+ - php artisan migrate
+ - php artisan db:seed
+ - Transformers example of use.
+	 - Create UserTransformer class in the previously created folder Transformers or other name in the app folder and create public function transform with model param. Transformers serve to return selected fields of model in response:
 
 ```
 <?php 
