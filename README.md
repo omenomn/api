@@ -57,13 +57,13 @@ class UserTransformer extends Transformer
 }
 ```
 
- 10. Add to app/Http/kernel.php routeMiddleware to check route group for api auth user this line:
+ - Add to app/Http/kernel.php routeMiddleware to check route group for api auth user this line:
 
 ```
 'dandaj.api' => \Dandaj\Api\Http\Middleware\Api::class,
 ```
 
- 11. To use models of package paste that's line in file:
+ - To use models of package paste that's line in file:
 
 ```
 use Dandaj\Api\Models\OAuthClient;
@@ -75,7 +75,7 @@ use Dandaj\Api\Models\OAuthToken;
 use Dandaj\Api\Models\OAuthUser;
 ```
 
- 11. If you want to create controller for api, this is example:
+ - If you want to create controller for api, this is example:
 
 ```
 <?php
