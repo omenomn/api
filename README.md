@@ -117,3 +117,4 @@ class UsersController extends ApiController
         //some validation rules
       ]);
     }
+}
