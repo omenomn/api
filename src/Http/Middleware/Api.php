@@ -19,7 +19,7 @@ class Api extends ApiController
     public function handle($request, Closure $next)
     {
         return $this->respondNotFound('Token does not exists');
-        $token = Token::where('token', $request->header('auth-token'))
+        $token = Token::where('token', 'like', $request->header('auth-token'))
                         ->first();
 
         if (!$token)
