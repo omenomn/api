@@ -28,9 +28,9 @@ class ApiServiceProvider extends ServiceProvider
 		$migrationPath = __DIR__ . '/' . $migration;
 		
 		$this->publishes([
-			$migrationPath . '2016_03_10_000000_create_oauth_users_table.php' => base_path($migration . '2016_03_10_000000_create_oauth_users_table.php'),
-			$migrationPath . '2016_03_10_100000_create_oauth_clients_table.php' => base_path($migration . '2016_03_10_100000_create_oauth_clients_table.php'),
-			$migrationPath . '2016_03_10_200000_create_oauth_tokens_table.php' => base_path($migration . '2016_03_10_100000_create_oauth_tokens_table.php'),
+			$migrationPath . '2016_03_10_000001_create_oauth_users_table.php' => base_path($migration . '2016_03_10_000001_create_oauth_users_table.php'),
+			$migrationPath . '2016_03_10_000002_create_oauth_clients_table.php' => base_path($migration . '2016_03_10_000002_create_oauth_clients_table.php'),
+			$migrationPath . '2016_03_10_000003_create_oauth_tokens_table.php' => base_path($migration . '2016_03_10_000003_create_oauth_tokens_table.php'),
 			__DIR__ . '/database/seeds/OAuthUsersTableSeeder.php' => base_path('database/seeds/OAuthUsersTableSeeder.php'),
 			__DIR__ . '/config/api.php' => base_path('config/api.php'),
 		]);
