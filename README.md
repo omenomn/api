@@ -157,4 +157,14 @@ class UsersController extends ApiController
 	}
 }
 ```
+- If you want to test api, type url /oauth/token/test:
+- To send request for api, you should add to header "auth-token" param with current token which you get from api:
+
+- For authenticate in api you must send in method post in json format, the following data:
+	- login:
+	- password:
+	- client_id:
+	- secret:
+
+	On url address /oauth/token
 
