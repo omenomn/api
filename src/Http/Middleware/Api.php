@@ -18,11 +18,14 @@ class Api extends ApiController
      */
     public function handle($request, Closure $next)
     {
+        if (!$request->header('auth-token'))
+            return $this->respondNotFound('You must send token in header');
+
         $token = Token::where('token', 'like', $request->header('auth-token'))
                         ->first();
 
         if (!$token)
-            return $this->respondNotFound('Token does not exists');
+            return $this->respondNotFound('Token does not correct');
 
         $dateNow = time();
         $tokenCreatedAt = strtotime($token->created_at);
