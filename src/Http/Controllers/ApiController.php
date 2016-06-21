@@ -3,6 +3,7 @@
 namespace Dandaj\Api\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Log;
 
 class ApiController extends Controller
 {
@@ -21,7 +22,7 @@ class ApiController extends Controller
     } 
 
     public function respondNotFound($message = 'Nie znaleziono')
-    {
+    {        
     	return $this->setStatusCode(404)->respondWithError($message);
     }
 
@@ -34,6 +35,8 @@ class ApiController extends Controller
 
     public function respondWithError($message)
     {
+        Log::info($message);
+        
     	return $this->respond([
     		'status' => 'error',
     		'message' => $message,
