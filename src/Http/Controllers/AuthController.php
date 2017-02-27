@@ -38,14 +38,16 @@ class AuthController extends ApiController
             return $this->setStatusCode(422)
                         ->respondWithError('Hasło niepoprawne');
 
-
         $client = $user->clients()
                         ->where('external_id', $credentials['client_id'])
-                        ->where('secret', $credentials['client_secret'])
                         ->first();
 
         if (!$client) 
             return $this->respondNotFound('Klient nie istnieje');
+
+        if (!\Hash::check($credentials['client_secret'], $client->secret)) 
+            return $this->setStatusCode(422)
+                        ->respondWithError('Klucz prywatny niepoprawny');
 
         $token = $client->tokens()
                         ->create(['token' => str_random(40)]);
